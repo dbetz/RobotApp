@@ -1,0 +1,36 @@
+RobotApp.cpp
+-I ./library/libabdrive
+-I ./library/libfdserial
+-I ./library/libsimplei2c
+-I ./library/libsimpletext
+-I ./library/libsimpletools
+-L ./library/libabdrive
+-L ./library/libfdserial
+-L ./library/libsimplei2c
+-L ./library/libsimpletext
+-L ./library/libsimpletools
+>-fno-exceptions
+>-fno-rtti
+>-ltiny
+>-m32bit-doubles
+>BOARD::ACTIVITYBOARD
+>compiler=C++
+>defs::-ffunction-sections
+>linker::-Wl,-gc-sections -lfdserial -labdrive -lsimplei2c -lsimpletext -lsimpletools>linker::-Wl,-gc-sections
+>memtype=cmm main ram compact
+>optimize=-Os
+ELClient.cpp
+ELClient.h
+ELClientHTTP.cpp
+ELClientHTTP.h
+ELClientResponse.cpp
+ELClientResponse.h
+FP.cpp
+FP.h
+FdSerial.c
+FdSerial.h
+FdSerial_driver.c
+robot.cpp
+robot.h
+stream.cpp
+stream.h
