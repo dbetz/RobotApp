@@ -1,24 +1,4 @@
 RobotApp.cpp
--I ./library/libabdrive
--I ./library/libfdserial
--I ./library/libsimplei2c
--I ./library/libsimpletext
--I ./library/libsimpletools
--L ./library/libabdrive
--L ./library/libfdserial
--L ./library/libsimplei2c
--L ./library/libsimpletext
--L ./library/libsimpletools
->-fno-exceptions
->-fno-rtti
->-ltiny
->-m32bit-doubles
->BOARD::ACTIVITYBOARD
->compiler=C++
->defs::-ffunction-sections
->linker::-Wl,-gc-sections -lfdserial -labdrive -lsimplei2c -lsimpletext -lsimpletools>linker::-Wl,-gc-sections
->memtype=cmm main ram compact
->optimize=-Os
 ELClient.cpp
 ELClient.h
 ELClientHTTP.cpp
@@ -34,3 +14,13 @@ robot.cpp
 robot.h
 stream.cpp
 stream.h
+>compiler=C++
+>memtype=cmm main ram compact
+>optimize=-Os
+>-m32bit-doubles
+>-fno-exceptions
+>-fno-rtti
+>defs::-ffunction-sections
+>-ltiny
+>linker::-Wl,-gc-sections
+>BOARD::ACTIVITYBOARD
