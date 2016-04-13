@@ -20,22 +20,22 @@
     <script>
       function gt(ik){
         var http = new XMLHttpRequest();
-        var url = \/robot\;
-        var params = \gto=\+ik;
-        http.open(\POST\, url, true);
-        http.setRequestHeader(\Content-type\,\application/x-www-form-urlencoded\);
+        var url = "/robot";
+        var params = "gto="+ik;
+        http.open("POST", url, true);
+        http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         http.send(params);
       }
     </script>
   </head>
-  <body bgcolor=\3b5898\>
-    <div align=\center\>
-      <font face=\Arial\ size=6 color=\white\>
+  <body bgcolor="3b5898">
+    <div align="center">
+      <font face="Arial" size=6 color="white">
         Hi! I'm ActivityBot :)
       </font><br>
-      <a onclick=\gt('F');\>Forward</a><br>
-      <a onclick=\gt('L');\>Left</a><a onclick=\gt('S');\>Stop</a><a onclick=\gt('R');\>Right</a><br>
-      <a onclick=\gt('B');\>Reverse</a>
+      <a onclick="gt('F');">Forward</a><br>
+      <a onclick="gt('L');">Left</a><a onclick="gt('S');">Stop</a><a onclick="gt('R');">Right</a><br>
+      <a onclick="gt('B');">Reverse</a>
     </div>
   </body>
 <html>
