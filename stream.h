@@ -9,7 +9,7 @@ class Stream {
 public:
     Stream();
     ~Stream();
-    bool begin(int baudRate);
+    bool begin(int baudRate, int rxPin = 31, int txPin = 30);
     bool isOpen() { return m_isOpen; }
     int available();
     int read();

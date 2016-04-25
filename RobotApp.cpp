@@ -4,6 +4,11 @@
 #include "stream.h"
 #include "robot.h"
 
+#define RX_PIN  31
+#define TX_PIN  30
+
+#define INTERNAL_PAGE
+
 // setup the SLIP connection
 ELClient esp(&Serial, &Serial);
 
@@ -13,6 +18,8 @@ ELClientHTTP http(&esp);
 // object to drive the ActivityBot
 Robot myRobot;
           
+#ifdef INTERNAL_PAGE
+
 const char *webpage1 = 
 "<!DOCTYPE HTML>"
 "<html>"
@@ -56,6 +63,8 @@ const char *webpage1 =
   "</body>"
 "<html>";
 
+#endif
+
 void httpCbHandler(void *response)
 {
   ELClientResponse *resp = (ELClientResponse *)response;
@@ -91,10 +100,13 @@ void httpCbHandler(void *response)
   Serial.print("  POST: ");
   Serial.println(post);
   
+#ifdef INTERNAL_PAGE
   if (strcmp(requestType, "GET") == 0)
     ret = http.sendResponse(200, webpage1);
+  else
+#endif
   
-  else if (strcmp(requestType, "POST") == 0) {
+  if (strcmp(requestType, "POST") == 0) {
     const char *p;
     if ((p = strstr(post, "gto=")) != NULL) {
         if (myRobot.processButton(p[4]))
@@ -111,7 +123,7 @@ void httpCbHandler(void *response)
 }
 
 void setup() {
-  Serial.begin(115200);   // the baud rate here needs to match the esp-link config
+  Serial.begin(115200, RX_PIN, TX_PIN);   // the baud rate here needs to match the esp-link config
   Serial.println("EL-Client starting!");
 
   // Sync-up with esp-link, this is required at the start of any sketch and initializes the

@@ -15,9 +15,9 @@ Stream::~Stream()
         _FdSerial_stop(&m_port);
 }
 
-bool Stream::begin(int baudRate)
+bool Stream::begin(int baudRate, int rxPin, int txPin)
 {
-    m_isOpen = _FdSerial_start(&m_port, 31, 30, 0, baudRate) != 0;
+    m_isOpen = _FdSerial_start(&m_port, rxPin, txPin, 0, baudRate) != 0;
     return m_isOpen;
 }
 
